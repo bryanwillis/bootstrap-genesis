@@ -1,13 +1,96 @@
 /*
 Layout Styling */
 
-body.sidebar-content {
-    .content-sidebar-wrap {
-        main {
-            float: right;
-            @media (max-width: 767px) {
-              float: none;
-            }
-        }
-    }
+.site-inner{
+  .container-fixed();
+@media (min-width: @screen-sm) {
+    width: @container-sm;
+  }
+  @media (min-width: @screen-md) {
+    width: @container-md;
+  }
+  @media (min-width: @screen-lg-min) {
+    width: @container-lg;
+  }
+}
+.content-sidebar-wrap {
+  .make-row();
+}
+ 
+.content-sidebar .content,
+.sidebar-content .content {
+  .make-xs-column(12);
+  .make-sm-column(8);
+  .make-md-column(8);
+  .make-lg-column(9);
+}
+.content-sidebar .sidebar-primary,
+.sidebar-content .sidebar-primary {
+  .make-xs-column(12);
+  .make-sm-column(4);
+  .make-md-column(4);
+  .make-lg-column(3);
+}
+ 
+.sidebar-content .content  {
+.make-sm-column-push(4);
+.make-md-column-push(4);
+}
+ 
+.sidebar-content .sidebar-primary  {
+.make-sm-column-pull(8);
+.make-md-column-pull(8);
+}
+ 
+.sidebar-content-sidebar .content,
+.content-sidebar-sidebar .content {
+  .make-xs-column(12);
+  .make-sm-column(6);
+  .make-md-column(6);
+  .make-lg-column(6);
+}
+ 
+.sidebar-content-sidebar .sidebar-primary,
+.sidebar-content-sidebar .sidebar-secondary,
+.content-sidebar-sidebar .sidebar-primary, 
+.content-sidebar-sidebar .sidebar-secondary  {
+  .make-xs-column(12);
+  .make-sm-column(3);
+  .make-md-column(3);
+  .make-lg-column(3);
+}
+ 
+.sidebar-sidebar-content .content  {
+  .make-xs-column(12);
+  .make-sm-column(6);
+  .make-md-column(6);
+  .make-lg-column(6);
+}
+.sidebar-sidebar-content .sidebar-primary, 
+.sidebar-sidebar-content .sidebar-secondary  {
+  .make-xs-column(12);
+  .make-sm-column(3);
+  .make-md-column(3);
+  .make-lg-column(3);
+}
+.sidebar-sidebar-content .content  {
+.make-sm-column-push(6);
+.make-md-column-push(6);
+}
+.sidebar-sidebar-content .sidebar-primary  {
+.make-sm-column-pull(6);
+.make-md-column-pull(6);
+}
+.sidebar-sidebar-content .sidebar-secondary {
+.make-sm-column-pull(6);
+.make-md-column-pull(6);
+}
+ 
+.sidebar-content-sidebar .content  {
+.make-sm-column-push(3);
+.make-md-column-push(3);
+}
+.sidebar-content-sidebar .sidebar-primary  {
+  .make-sm-column-pull(6);
+  .make-md-column-pull(6);
 }
