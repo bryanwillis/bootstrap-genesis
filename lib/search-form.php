@@ -13,3 +13,19 @@ function bsg_search_form( $form, $search_text, $button_text, $label ) {
 
     return $form;
 }
+
+
+function my_search_form_mega( $form ) {
+$form = '<form role="search" method="get" class="search-form form-inline" action="'. home_url( '/' ) .'">
+  <label class="sr-only"> Search for: </label>
+  <div class="input-group bootstrap-search-form" style="width: 100%;">
+    <input type="search" value="'. get_search_query() .'" name="s" class="search-field form-control" placeholder=" Search...">
+    <span class="input-group-btn" style="width: 1%;">
+      <button type="submit" class="btn"><i class="glyphicon glyphicon-search"></i></button>
+    </span>
+  </div>
+</form>';
+  return $form;
+}
+
+add_filter( 'get_search_form', 'my_search_form_mega', 99 );
