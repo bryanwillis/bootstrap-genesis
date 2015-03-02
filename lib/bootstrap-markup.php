@@ -14,17 +14,14 @@ function bsg_add_markup_class( $attr, $context ) {
     $classes_to_add = apply_filters ('bsg-classes-to-add',
         // default bootstrap markup values
         array(
-            'site-header'       => 'container',
-            'site-inner'        => 'container',
-            'site-footer'       => 'container',
-            'content-sidebar-wrap'      => 'row',
-            'content'           => 'col-sm-9',
-            'sidebar-primary'   => 'col-sm-3',
-            'archive-pagination'=> 'clearfix',
+            'site-header'       	=> 'container',
+            'site-footer'       	=> 'container',
+            'archive-pagination'	=> 'clearfix',
         ),
         $context,
         $attr
     );
+
 
     // populate $classes_array based on $classes_to_add
     $value = isset( $classes_to_add[ $context ] ) ? $classes_to_add[ $context ] : array();
