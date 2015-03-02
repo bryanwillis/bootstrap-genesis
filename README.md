@@ -1,5 +1,7 @@
 bootstrap-genesis
 =================
+https://gist.github.com/bryanwillis/08b64ac92a2bf714417b
+
 WordPress Genesis Child Theme setup to use Bootstrap 3, Sass, and Grunt.
 
 Contributors
