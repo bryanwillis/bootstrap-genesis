@@ -1,6 +1,8 @@
 <?php
 
 // add bootstrap classes
+add_filter( 'genesis_attr_nav-primary',         'bsg_add_markup_class', 10, 2 );
+add_filter( 'genesis_attr_nav-secondary',       'bsg_add_markup_class', 10, 2 );
 add_filter( 'genesis_attr_site-header',         'bsg_add_markup_class', 10, 2 );
 add_filter( 'genesis_attr_site-inner',          'bsg_add_markup_class', 10, 2 );
 add_filter( 'genesis_attr_content-sidebar-wrap','bsg_add_markup_class', 10, 2 );
@@ -14,6 +16,8 @@ function bsg_add_markup_class( $attr, $context ) {
     $classes_to_add = apply_filters ('bsg-classes-to-add',
         // default bootstrap markup values
         array(
+            'nav-primary'           => 'navbar navbar-default',
+            'nav-secondary'         => 'navbar navbar-inverse',
             'site-header'       	=> 'container',
             'site-footer'       	=> 'container',
             'archive-pagination'	=> 'clearfix',
