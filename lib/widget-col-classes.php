@@ -25,14 +25,6 @@ function genesis_add_bs_widgets_form($t,$return,$instance) {
     <div class="genesis-bs-widget-columns">
       <h3><a href="#" class="genesis-bs-widget-columns-handle"><?php _e('Bootstrap grid class', 'genesis-bscol'); ?> <span class="dashicons dashicons-arrow-down-alt"></span></a></h3>
       <div class="genesis-bs-widget-columns-inner">
-        <p>
-          <?php _e('Please see ', 'genesis-bscol'); ?> 
-          <a href="http://getbootstrap.com/css/#grid-options" target="_blank">
-            <?php echo esc_url('http://getbootstrap.com/css/#grid-options'); ?>
-          </a> 
-          <?php _e(' for documentation.', 'genesis-bscol'); ?>
-        </p>
-    
         <hr>
     <!-- Rows -->
         <div class="form-group">
@@ -44,7 +36,7 @@ function genesis_add_bs_widgets_form($t,$return,$instance) {
             type="checkbox"
             value="1"
             <?php echo $instance['genesis_bs_row_start'] == '1' ? ' checked="checked"' : ''; ?>>
-            <?php _e('Open a div.row', 'genesis-bscol'); ?></label>
+            <?php _e('Open a .row', 'genesis-bscol'); ?></label>
         </div>
     
         <div class="form-group">
@@ -56,17 +48,16 @@ function genesis_add_bs_widgets_form($t,$return,$instance) {
             name="<?php echo $t->get_field_name('genesis_bs_row_end'); ?>"
             value="1"
             <?php echo $instance['genesis_bs_row_end'] == '1' ? ' checked="checked"' : ''; ?>>
-            <?php _e('Close a div.row', 'genesis-bscol'); ?></label>
+            <?php _e('Close a .row', 'genesis-bscol'); ?></label>
         </div>
         <hr>
     
     
     <p>
     <!-- <i class="fa fa-desktop"></i> -->
-    <span class="iconized font-awesome glyph-desktop size-sharp-2x"></span> <?php _e('Desktops ', 'genesis-bscol'); ?>
+    <span class="dashicons dashicons-desktop"></span> <?php _e('Desktops ', 'genesis-bscol'); ?>
     </p>
     <div class="form-inline">
-    
         <div class="form-group">          
     <label for="<?php echo $t->get_field_id('genesis_bs_col_lg'); ?>"><?php _e('.col-lg- ', 'genesis'); ?></label>
           <select class="widefat" id="<?php echo $t->get_field_id('genesis_bs_col_lg'); ?>" name="<?php echo $t->get_field_name('genesis_bs_col_lg'); ?>">
@@ -89,7 +80,7 @@ function genesis_add_bs_widgets_form($t,$return,$instance) {
         
     <p>
     <!-- <i class="fa fa-laptop"></i> -->
-    <span class="iconized font-awesome glyph-laptop size-sharp-2x"></span> <?php _e('Labtops ', 'genesis-bscol'); ?>
+    <span class="dashicons dashicons-tablet"></span> <?php _e('Labtops ', 'genesis-bscol'); ?>
     </p>
         
     <div class="form-inline">
@@ -117,7 +108,7 @@ function genesis_add_bs_widgets_form($t,$return,$instance) {
     
     <p>
     <!-- <i class="fa fa-tablet"></i> -->
-    <span class="iconized font-awesome glyph-tablet size-sharp-2x"></span> <?php _e('Tablets ', 'genesis-bscol'); ?>
+    <span class="dashicons dashicons-smartphone"></span> <?php _e('Tablets ', 'genesis-bscol'); ?>
     </p>
 
     <div class="form-inline">
@@ -144,7 +135,7 @@ function genesis_add_bs_widgets_form($t,$return,$instance) {
     
     <p>
     <!-- <i class="fa fa-mobile"></i> -->
-    <span class="iconized font-awesome glyph-mobile size-sharp-2x"></span> <?php _e('Phones ', 'genesis-bscol'); ?> 
+    <span class="dashicons dashicons-phone"></span> <?php _e('Phones ', 'genesis-bscol'); ?> 
     </p>
 
     <div class="form-inline">
@@ -221,11 +212,7 @@ function genesis_add_bs_widgets_form($t,$return,$instance) {
     return array($t,$return,$instance);
 }
 add_action('in_widget_form', 'genesis_add_bs_widgets_form',5,3);
-/*
-|----------------------------------------------------------------
-|   Save form options
-|----------------------------------------------------------------
-*/
+
 function genesis_add_bs_widgets_form_update($instance, $new_instance, $old_instance){
     $instance['genesis_bs_row_start'] = $new_instance['genesis_bs_row_start'];
     $instance['genesis_bs_row_end']   = $new_instance['genesis_bs_row_end'];
@@ -245,11 +232,7 @@ function genesis_add_bs_widgets_form_update($instance, $new_instance, $old_insta
     return $instance;
 }
 add_filter('widget_update_callback', 'genesis_add_bs_widgets_form_update',5,3);
-/*
-|----------------------------------------------------------------
-|   Add widget css classes
-|----------------------------------------------------------------
-*/
+
 function genesis_add_bs_widgets_dynamic_sidebar_params($params){
     global $wp_registered_widgets;
     $widget_id = $params[0]['widget_id'];
@@ -290,7 +273,7 @@ function genesis_add_bs_widgets_dynamic_sidebar_params($params){
 add_filter('dynamic_sidebar_params', 'genesis_add_bs_widgets_dynamic_sidebar_params');
 function genesis_add_bs_widgets_head_style()
 {
-    echo '<style>.genesis-bs-widget-columns label{font-weight: bold;}.genesis-bs-widget-columns>h3 {background:#0074a2;color:#fff;border-top:3px solid #0074a2;text-align:center;border-radius:4px}.genesis-bs-widget-columns>h3>a{line-height:30px;color:#fff}.genesis-bs-widget-columns>h3>a span{line-height:30px;color:#fff}.genesis-bs-widget-columns-inner{display:none;}.genesis-bs-widget-columns-handle{text-decoration:none;}</style>';
+    echo '<style>.genesis-bs-widget-columns label{font-weight: bold;}.genesis-bs-widget-columns>h3 {background:#0074a2;color:#fff;border-top:3px solid #0074a2;text-align:center;border-radius:4px}.genesis-bs-widget-columns>h3>a{line-height:30px;color:#fff}.genesis-bs-widget-columns>h3>a span{line-height:30px;color:#fff}.genesis-bs-widget-columns-inner{display:none;}.genesis-bs-widget-columns-handle{text-decoration:none;}</style>';    
     echo '<script type="text/javascript">
             jQuery(document).ready(function($){
               $("body").on("click", ".genesis-bs-widget-columns-handle", function(){
