@@ -4,6 +4,21 @@
 // Add HTML5 markup structure
 add_theme_support( 'html5' );
 
+
+remove_theme_support( 'genesis-structural-wraps' );
+
+
+/*
+  add_theme_support( 'genesis-structural-wraps', array(
+	//'header',
+	//'nav',
+	//'subnav',
+	//'site-inner',
+	//'footer-widgets',
+	//'footer'
+) );
+// */
+
 // Remove item(s) from genesis admin screens
 add_action( 'genesis_admin_before_metaboxes', 'bsg_remove_genesis_theme_metaboxes' );
 
