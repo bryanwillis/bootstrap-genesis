@@ -1,6 +1,17 @@
 <?php
 
 /*
+function remove_genesis_site_title() {
+	remove_action( 'genesis_site_title', 'genesis_seo_site_title' );
+	remove_action( 'genesis_site_description', 'genesis_seo_site_description' );
+
+}
+add_action( 'after_setup_theme', 'remove_genesis_site_title', 11 );
+// */
+
+
+
+/*
 function bsg_logo()  {
 $header = array(
     	'header-selector'        => '.navbar-brand',
