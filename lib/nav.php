@@ -45,16 +45,9 @@ function bsg_nav_menu_markup_filter( $html, $args ) {
             <span class="icon-bar"></span>
           </button>
 EOT;
-        // only include blog name and description in the nav
-        // if it is the primary nav location
+
         if ( 'primary' === $args->theme_location ) {
-            $output .= '<a class="navbar-brand" id="logo" title="' .
-                esc_attr( get_bloginfo( 'description' ) ) .
-                '" href="' .
-                    esc_url( home_url( '/' ) ) .
-            '">';
-                $output .= get_bloginfo( 'name' );
-            $output .= '</a>';
+            $output .= '<a class="navbar-brand" id="logo" href="'. esc_url( home_url( '/' ) ) .'" title="'. esc_attr( get_bloginfo( 'name', 'display' ) ) .'" rel="home" ><img src="'. esc_url( get_theme_mod( 'link_textcolor' ) ) .'" alt="'. esc_attr( get_bloginfo( 'name', 'display' ) ) .'"></a>';
         }
 
         $output .= '</div>';
