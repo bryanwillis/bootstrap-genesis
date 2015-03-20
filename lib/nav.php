@@ -1,5 +1,69 @@
 <?php
 
+/*
+function bsg_logo()  {
+$header = array(
+    	'header-selector'        => '.navbar-brand',
+	'default-image'          => '',
+	'random-default'         => false,
+    	'header-text'            => false,
+	'width'                  => 0,
+	'height'                 => 0,
+	'flex-height'            => true,
+	'flex-width'             => true,
+	'default-text-color'     => '',
+	'uploads'                => true,
+	'wp-head-callback'       => '',
+	'admin-head-callback'    => '',
+	'admin-preview-callback' => '',
+	);
+add_theme_support( 'custom-header', $header ); 
+}
+add_action( 'after_setup_theme', 'bsg_logo' );
+// */
+
+function bsg_customizer_add_navbar_logo() { 
+    $output .= '<a class="navbar-brand" id="logo" href="'. esc_url( home_url( '/' ) ) .'" title="'. esc_attr( get_bloginfo( 'name', 'display' ) ) .'" rel="home" ><img src="'. esc_url( get_theme_mod( 'link_textcolor' ) ) .'" alt="'. esc_attr( get_bloginfo( 'name', 'display' ) ) .'"></a>';
+    return $output;
+}
+
+
+
+
+function bsg_customize_register( $wp_customize ) {
+
+ $wp_customize->add_section( 'mytheme_options', 
+         array(
+            'title' => __( 'Branding', 'mytheme' ), //Visible title of section
+            'priority' => 35, //Determines what order this appears in
+            'capability' => 'edit_theme_options', //Capability needed to tweak
+            'description' => __('Allows you to customize some example settings for MyTheme.', 'mytheme'), //Descriptive tooltip
+         ) 
+      );
+$wp_customize->add_setting( 'link_textcolor', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
+         array(
+            'default' => '#2BA6CB', //Default setting/value to save
+            'type' => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
+            'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
+            'transport' => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
+         ) 
+      );     
+$wp_customize->add_control( new WP_Customize_Image_Control(
+         $wp_customize, 
+         'mytheme_link_textcolor', 
+         array(
+            'label' => __( 'Navbar Logo', 'mytheme' ), //Admin-visible name of the control
+            'section' => 'colors', //ID of the section this control should render in (can be one of yours, or a WordPress default section)
+            'settings' => 'link_textcolor', //Which setting to load and manipulate (serialized is okay)
+            'priority' => 10, //Determines the order this control appears in for the specified section
+         ) 
+      ) );
+      
+}
+add_action( 'customize_register', 'mytheme_customize_register' );
+
+
+
 if ( class_exists('UberMenuStandard') ) {
     return;
 }
