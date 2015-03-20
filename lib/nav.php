@@ -33,6 +33,29 @@ add_theme_support( 'custom-header', $header );
 add_action( 'after_setup_theme', 'bsg_logo' );
 // */
 
+function fix_navbar_css_pitfalls() {
+	?>
+	<style type="text/css">
+		.navbar.navbar-static-top + .navbar.navbar-static-top {
+    			margin-top: -20px;
+    			z-index: auto;
+		}
+		.navbar.navbar-static-top + .jumbotron {
+   			margin-top: -20px;
+		}
+		.navbar-brand >  img {
+  			object-fit: contain;
+  			max-height: 100%;
+		}
+	</style>
+	<?php
+}
+add_action( 'wp_head', 'fix_navbar_css_pitfalls' );
+
+
+
+
+
 function bsg_customizer_add_navbar_logo() { 
     $output .= '<a class="navbar-brand" id="logo" href="'. esc_url( home_url( '/' ) ) .'" title="'. esc_attr( get_bloginfo( 'name', 'display' ) ) .'" rel="home" ><img src="'. esc_url( get_theme_mod( 'link_textcolor' ) ) .'" alt="'. esc_attr( get_bloginfo( 'name', 'display' ) ) .'"></a>';
     return $output;
